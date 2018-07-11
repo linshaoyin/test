@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="test.css">
+	<style type="text/css">
+		
+
+
+	</style>
+	
+</head>
+<body>
+	<div class="top" >
+		
+		<div class="logo_box">
+			<a href="#" class="nav_logo"></a>
+		</div>
+
+		<div class="nav_box">
+			<ul class="nav_list">
+				<li><a href="#">官网首页</a></li>
+				<li><a href="#">绑定查询</a></li>
+				<li><a href="#">国服预约</a></li>
+				<li><a href="#">老兵绑定</a></li>
+				<li><a href="#">游戏特色</a></li>
+				<li><a href="#">社区App</a></li>
+				<li><a href="#">网吧认证</a></li>
+			</ul>
+		</div>
+
+		<div class="buttom_box">
+			
+		</div>
+
+	</div>
+	
+	<div class="left_nav">
+		<ul>
+			<li onclick='changeBox("",0)'"><span style="color:#ff9800">NE</span></li>
+			<li onclick='changeBox("",1)'><span>E</span></li>
+			<li onclick='changeBox("",2)'><span>SE</span></li>
+		</ul>
+	</div>
+
+
+	<div class="container">
+		<div class="first_box">
+			<div class="first_bg"></div>
+			<video src="video/first_video.mp4" autoplay loop></video>
+		</div>
+
+		<div class="second_box">
+			<p class="second_bg"></p>
+			<video src="video/second_video.mp4" loop></video>
+		</div>
+		<div class="third_box">
+			<video src="video/third_video.mp4" loop></video>
+		</div>
+
+
+
+	</div>
+	
+
+
+	<script>
+		var index = 0;
+		var video_boxs = document.querySelectorAll('.container > div');
+		var leftNavLi = document.querySelectorAll('.left_nav > ul > li');
+		// console.log(video_boxs);’
+		var isChange = false;
+
+		// 键盘事件
+		window.addEventListener('keydown',keyUpDown,true);
+
+		// 键盘切换函数
+		function keyUpDown(event) {
+			// console.log(event);
+			// video_boxs[index].querySelector('video').pause();
+			var flag = '';
+			if(event.key == "ArrowDown") {
+				flag = 'down';
+			}else if(event.key == "ArrowUp") {
+				flag = 'up';
+			}
+
+			changeBox(flag);
+		}
+
+		// 切换盒子
+		function changeBox(flag,num) {
+			video_boxs[index].querySelector('video').pause();
+			leftNavLi[index].querySelector('span').style.color='#fff';
+
+			if(num != null){
+				index = num;
+			}else{
+				if(flag == 'down'){
+					index ++;
+				}else if(flag == 'up'){
+					index --;
+				}
+			}
+
+			// 判断是否超出屏幕范围
+			if(index < 0){
+				index = 0;
+			}else if(index >= video_boxs.length){
+				index --;
+			} 
+
+			var clienty = document.documentElement.clientHeight;
+
+			y = -clienty * index;
+			document.querySelector('.container').style.transform = 'translate(0px,'+ y +'px)';
+
+			video_boxs[index].querySelector('video').play();
+			leftNavLi[index].querySelector('span').style.color='#ff9800';
+
+			isChange = false;
+		}
+
+
+		// 鼠标切换函数
+		function scrollUpDown(event) {
+			// video_boxs[index].querySelector('video').pause();
+
+			var flag = "";
+
+			if(event.wheelDelta < 0){
+				flag = 'down';
+			}else{
+				flag = 'up';
+			}
+			// changeBox();
+
+			// if(index < 0 || index >= video_boxs.length){
+			// 	isChange = true;
+			// } 
+				
+			if (!isChange) {
+ 			// 如果没有切换盒子，那么就执行changeBox
+	 			setTimeout(function () {
+	 				changeBox(flag)
+	 			},200)
+	 			// 改变为正在切换
+	 			isChange = true;
+ 			}
+		}
+
+		
+
+
+		//火狐
+		// document.addEventListener('DOMmouseScroll',scrollUpDown,false);	
+
+		//谷歌-鼠标事件
+		window.addEventListener('mousewheel',scrollUpDown,false);
+
+
+
+
+
+
+	</script>
+
+</body>
+</html>

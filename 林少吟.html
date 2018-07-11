@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- <link rel="stylesheet" href="test.css"> -->
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+
+		a{
+			text-decoration:none;
+			color:#fff;
+		}
+
+		body{
+			height:100%;
+			overflow:hidden;
+			background-color:#000;
+		}
+
+		/*导航栏*/
+
+		.top{
+			height:88px;
+			width:100%;
+			background-image:url(img/bg_top.png);
+			position:fixed;
+			top:0;
+			left:0;
+			overflow: hidden;
+			z-index:100;
+		}
+
+
+
+		.nav_list{
+			list-style:none;
+			font-color:#fff;
+		}
+
+		.nav_list li{
+			float:left;
+			line-height:88px;
+			width:100px;
+			/*margin-right:20px;*/
+			
+		}
+
+		/*内容*/
+
+		.container{
+			transform:translate(0,0);
+			transition:all 1s;
+
+		}
+
+
+		.container > div{
+			height:100%;
+			width:100%;
+		}
+
+
+		video{
+			width:100%;
+			height:661px;
+			object-fit:fill;
+		}
+
+
+	</style>
+	
+</head>
+<body>
+	<div class="top" >
+		
+		<div class="logo_box">
+			<a href=""></a>
+		</div>
+
+		<div class="nav_box">
+			<ul class="nav_list">
+				<li><a href="#">官网首页</a></li>
+				<li><a href="">绑定查询</a></li>
+				<li><a href="">国服预约</a></li>
+				<li><a href="">老兵绑定</a></li>
+				<li><a href="">游戏特色</a></li>
+				<li><a href="">社区App</a></li>
+				<li><a href="">网吧认证</a></li>
+			</ul>
+		</div>
+
+		<div class="buttom_box">
+			
+		</div>
+
+	</div>
+	
+
+	<div class="container">
+
+		<div class="first_box">
+			<video src="video/first_video.mp4" autoplay loop></video>
+		</div>
+
+		<div class="second_box">
+			<video src="video/second_video.mp4" loop></video>
+		</div>
+		<div class="third_box">
+			<video src="video/third_video.mp4" loop></video>
+		</div>
+
+
+
+	</div>
+	
+
+
+	<script>
+		var index = 0;
+		var video_boxs = document.querySelectorAll('.container > div');
+		console.log(video_boxs);
+		
+		function upDown(event) {
+			console.log(event);
+			video_boxs[index].querySelector('video').pause();
+
+			if(event.key == "ArrowDown") {
+				index ++;
+			}else if(event.key == "ArrowUp") {
+				index --;
+			}
+
+			if(index < 0){
+				index = 0;
+			}else if(index >= video_boxs.length){
+				index --;
+			} 
+
+			var clienty = document.documentElement.clientHeight;
+
+			y = -clienty * index;
+			document.querySelector('.container').style.transform = 'translate(0px,'+ y +'px)';
+
+			video_boxs[index].querySelector('video').play();
+		}
+
+		window.addEventListener('keydown',upDown,true);
+
+
+
+	</script>
+
+</body>
+</html>

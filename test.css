@@ -1,137 +1,183 @@
 *{
-			margin:0;
-			padding:0;
-		}
+	margin:0;
+	padding:0;
+}
 
-		a{
-			text-decoration:none;
-			color:#fff;
-		}
+a{
+	text-decoration:none;
+	color:#fff;
+}
 
-		body{
-			height:100%;
-			overflow:hidden;
-			background-color:#000;
-		}
+body{
+	height:100%;
+	overflow:hidden;
+	background-color:#000;
+}
 
-		/*导航栏*/
+/*导航栏*/
 
-		.top{
-			height:88px;
-			width:100%;
-			background-image:url(img/bg_top.png);
-			position:fixed;
-			top:0;
-			left:0;
-			overflow: hidden;
-			z-index:100;
-		}
+.top{
+	height:88px;
+	width:100%;
+	background-image:url(img/bg_top.png);
+	position:fixed;
+	top:0;
+	left:0;
+	overflow: hidden;
+	z-index:10;
+}
 
-		
-		.left_nav{
-			height:450px;
-			width:50px;
-			position:fixed;
-			top:88px;
-			left:10px;
-			background:url(img/bg_nav.png);
-			background-repeat: no-repeat;
-			background-size:40%;
+/*顶部导航栏*/
+
+/*绝地求生logo*/
+.logo_box{
+	height:80px;
+	width:150px;
+	margin-left:80px;
+	margin-right:50px;
+	float:left;
+	background:url(img/nav_spr.png);
+	background-position:0px -130px;
+}
+
+.logo_box a{
+	display: inline-block;
+	height:80px;
+	width:150px;
+}
+
+/*导航栏*/
+
+.nav_list{
+	list-style:none;
+	font-color:#fff;
+}
+
+.nav_list li{
+	float:left;
+	line-height:88px;
+	width:100px;
+	/*margin-right:20px;*/
 			
-			
-			/*left:10px;*/
+}
 
-			z-index:100;
-		}
+.nav_list li a:hover{
+	color:#ff9800;
+}
 
-		.left_nav ul{
-			list-style: none;
-			margin-top:20px;
-		}
+/*按钮导航*/
 
-		.left_nav li{
-			color:#fff;
-			/*line-height:100px;*/
-			margin-bottom:75px;
-			margin-left:20px;
-		}
-
-		
-
-		.left_nav li:hover{
-			color:#ff9800;
-		}
-
-		.left_nav_fir_li{
-			color:#ff9800;
-		}
+.buttom_box{
+	height:40px;
+	width:140px;
+	float:right;
+	margin-top:15px;
+	margin-right: 100px;
+	background:url(img/sprite.png);
+	background-position:550px -570px;
+}
 
 
-		.nav_list{
-			list-style:none;
-			font-color:#fff;
-		}
+/*左侧导航栏	*/
 
-		.nav_list li{
-			float:left;
-			line-height:88px;
-			width:100px;
-			/*margin-right:20px;*/
-			
-		}
+.left_nav{
+	height:450px;
+	width:50px;
+	position:fixed;
+	top:88px;
+	left:10px;
+	background:url(img/bg_nav.png);
+	background-repeat: no-repeat;
+	background-size:40%;
+	z-index:100;
+}
 
-		/*内容*/
+.left_nav ul{
+	list-style: none;
+	margin-top:20px;
+}
 
-		.container{
-			transform:translate(0,0);
-			transition:all 1s;
-			/*position:relative;*/
-		}
-
-
-		.container > div{
-			height:100%;
-			width:100%;
-		}
-
-		/*.contain*/
+.left_nav li{
+	color:#fff;
+	margin-bottom:75px;
+	margin-left:20px;
+}
 
 
-		video{
-			width:100%;
-			height:661px;
-			object-fit:fill;
-			display:block;
-		}
 
-		.first_box{
-			/*position:absolute;*/
-		}
+.left_nav li:hover{
+	color:#ff9800;
+}
 
-		.first_bg{
-			background:url(img/logo.png);
-			background-repeat: no-repeat;
-			height:300px;
-			width:400px;
-			position:absolute;
-			top:300px;
-			left:350px;
-			background-size:100%;
-
-		}
+.left_nav_fir_li{
+	color:#ff9800;
+}
 
 
-		.second_bg{
-			background:url(img/sprite.png);
-			height:200px;
-			width:540px;
-			/*margin-left:;*/
-			position:absolute;
-			top:50%;
-			left:50%;
-			margin-left:-270px;
-			margin-top:-100px;
-			background-position:-250px -220px;
-			/*background-size:70%;*/
-		}
-		
+
+/*内容*/
+
+.container{
+	transform:translate(0,0);
+	transition:all 1s;
+}
+
+
+.container > div{
+	position:relative;
+	width:100%;
+	height:661px;
+}
+
+/*.contain*/
+
+
+video{
+	width:100%;
+	height:100%;
+	object-fit:fill;
+	display:block;
+}
+
+
+.first_bg{
+	background:url(img/logo.png);
+	background-repeat: no-repeat;
+	height:300px;
+	width:400px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-200px;
+	margin-top:-150px;
+	background-size:100%;
+
+}
+
+.second_bg{
+	background:url(img/sprite.png);
+	height:200px;
+	width:540px;
+	/*margin-left:;*/
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-270px;
+	margin-top:-100px;
+	background-position:-250px -220px;
+	/*background-size:70%;*/
+}
+
+.third_bg{
+	background:url(img/sprite.png);
+	height:220px;
+	width:540px;
+	/*margin-left:;*/
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-270px;
+	margin-top:-100px;
+	background-position:-790px -215px;
+}
+

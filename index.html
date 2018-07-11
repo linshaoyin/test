@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>绝地求生</title>
 	<link rel="stylesheet" href="test.css">
 	<style type="text/css">
 		
@@ -31,7 +31,7 @@
 		</div>
 
 		<div class="buttom_box">
-			
+			<a href="#"></a>			
 		</div>
 
 	</div>
@@ -52,14 +52,13 @@
 		</div>
 
 		<div class="second_box">
-			<p class="second_bg"></p>
+			<div class="second_bg"></div>
 			<video src="video/second_video.mp4" loop></video>
 		</div>
 		<div class="third_box">
+			<div class="third_bg"></div>
 			<video src="video/third_video.mp4" loop></video>
 		</div>
-
-
 
 	</div>
 	
@@ -71,23 +70,6 @@
 		var leftNavLi = document.querySelectorAll('.left_nav > ul > li');
 		// console.log(video_boxs);’
 		var isChange = false;
-
-		// 键盘事件
-		window.addEventListener('keydown',keyUpDown,true);
-
-		// 键盘切换函数
-		function keyUpDown(event) {
-			// console.log(event);
-			// video_boxs[index].querySelector('video').pause();
-			var flag = '';
-			if(event.key == "ArrowDown") {
-				flag = 'down';
-			}else if(event.key == "ArrowUp") {
-				flag = 'up';
-			}
-
-			changeBox(flag);
-		}
 
 		// 切换盒子
 		function changeBox(flag,num) {
@@ -110,10 +92,8 @@
 			}else if(index >= video_boxs.length){
 				index --;
 			} 
-
-			var clienty = document.documentElement.clientHeight;
-
-			y = -clienty * index;
+			// var clienty = document.documentElement.clientHeight;
+			y = -661 * index;
 			document.querySelector('.container').style.transform = 'translate(0px,'+ y +'px)';
 
 			video_boxs[index].querySelector('video').play();
@@ -122,39 +102,43 @@
 			isChange = false;
 		}
 
+		// 键盘事件
+		window.addEventListener('keydown',keyUpDown,true);
+
+		// 键盘切换函数
+		function keyUpDown(event) {
+			var flag = '';
+			if(event.key == "ArrowDown") {
+				flag = 'down';
+			}else if(event.key == "ArrowUp") {
+				flag = 'up';
+			}
+
+			changeBox(flag);
+		}
 
 		// 鼠标切换函数
 		function scrollUpDown(event) {
-			// video_boxs[index].querySelector('video').pause();
-
 			var flag = "";
 
-			if(event.wheelDelta < 0){
+			if(event.detail > 0 || event.wheelDelta < 0){
 				flag = 'down';
 			}else{
 				flag = 'up';
 			}
-			// changeBox();
-
-			// if(index < 0 || index >= video_boxs.length){
-			// 	isChange = true;
-			// } 
 				
 			if (!isChange) {
- 			// 如果没有切换盒子，那么就执行changeBox
 	 			setTimeout(function () {
 	 				changeBox(flag)
-	 			},200)
-	 			// 改变为正在切换
+	 			},200);
 	 			isChange = true;
  			}
 		}
 
-		
-
-
 		//火狐
-		// document.addEventListener('DOMmouseScroll',scrollUpDown,false);	
+		if(document.addEventListener){
+			document.addEventListener('DOMMouseScroll',scrollUpDown,false);	
+		}
 
 		//谷歌-鼠标事件
 		window.addEventListener('mousewheel',scrollUpDown,false);
